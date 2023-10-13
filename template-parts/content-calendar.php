@@ -5,7 +5,14 @@
         <div class="row">
 
             <div class="col-lg-5 mb-4 mb-lg-0 pt-5">
+            <?php  $args = array(
+                    'posts_per_page' => 3,
+                    'post_type'      => 'galeria',
+                    'order'          => 'DESC'
+                );
 
+                $galleries = new WP_Query( $args );
+             if( $galleries->have_posts() == 1 ):?>
                 <div class="row justify-content-end">
 
                     <div class="col-lg-7">
@@ -25,7 +32,7 @@
                                 );
 
                                 $galleries = new WP_Query( $args );
-                                if( $galleries->have_posts() == 1 ):
+                                
                                 if( $galleries->have_posts() ) :
                                     while( $galleries->have_posts() ) : $galleries->the_post();
                             ?>      
