@@ -13,8 +13,32 @@ get_header(); ?>
 <div id="main" class="site-main" role="main">
 
 <?php while ( have_posts() ) : the_post(); ?>
+<section 
+class="l-template-content__banner d-flex justify-content-center align-items-center u-bg-cover u-bg-no-repeat img-fluiw w-100 pt-5 pb-5"
+style="background-image: url(<?php echo get_template_directory_uri()?>/../wp-bootstrap-starter-child/assets/images/banner.webp)">
 
-<section class="mb-5">
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col-12 px-0">
+                <h1 class="l-template-content__banner__title position-relative u-font-weight-bold u-font-family-cinzel-decorative text-center u-color-folk-white ">
+                    <?php the_title() ?>
+                </h1>
+            </div>
+        </div>
+    </div>
+</section>
+<div class=" justify-content-center">
+            <div class="col-md-3 mt-3">
+                <a 
+                class="l-news__small__card-read-more u-line-height-100 hover:u-opacity-8 d-block u-font-weight-bold text-center text-decoration-none u-color-folk-white u-bg-folk-secondary py-3 px-5" 
+                href="<?php echo get_home_url( null, 'fotos' ) ?>">
+                    Voltar para a galeria
+                </a>
+            </div>
+</div>
+<!-- <section class="mb-5">
 
     <div class="container-fluid">
 
@@ -22,19 +46,16 @@ get_header(); ?>
 
             <div class="col-12 px-0">
 
-                <!-- <img
-                class="img-fluid"
-                src=""
-                alt="<php the_title() ?>"> -->
-
-                <?php
+                                <hp
                     $alt_title = get_the_title();
 
-                    echo get_the_post_thumbnail( 303, 'post-thumbnail', array( 'class' => 'img-fluiw w-100', 'style' => 'object-fit:cover', 'alt' => $alt_title) ); ?>
+                    echo get_the_post_thumbnail( 303, 'post-thumbnail', array( 'class' => 'img-fluiw w-100', 'style' => 'object-fit:cover', 'alt' => $alt_title) ); 
+                    echo the_title()
+                ?>
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <section>
 
@@ -83,16 +104,7 @@ get_header(); ?>
             </div>
         </div>
 
-        <div class="row justify-content-center">
-
-            <div class="col-md-5 mt-3">
-                <a 
-                class="l-news__small__card-read-more u-line-height-100 hover:u-opacity-8 d-block u-font-weight-bold text-center text-decoration-none u-color-folk-white u-bg-folk-secondary py-3 px-5" 
-                href="<?php echo get_home_url( null, 'fotos' ) ?>">
-                    Voltar para a página de galeria
-                </a>
-            </div>
-        </div>
+        
     </div>
 </section>
 

@@ -33,7 +33,7 @@ get_header(); ?>
                 <?php
                     $alt_title = get_the_title();
 
-                    echo get_the_post_thumbnail( 303, 'post-thumbnail', array( 'class' => 'img-fluiw w-100', 'style' => 'object-fit:cover', 'alt' => $alt_title) ); ?>
+                    echo get_the_post_thumbnail( $post_id, 'post-thumbnail', array( 'class' => 'img-fluiw w-100', 'style' => 'object-fit:cover', 'alt' => $alt_title) ); ?>
             </div>
         </div>
     </div>
