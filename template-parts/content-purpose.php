@@ -31,8 +31,8 @@
 
                             <div class="col-lg-8 col-xl-5">
                                 <a 
-                                class="l-blogs__read-more u-line-height-100 hover:u-opacity-8 d-block u-font-weight-bold text-center text-decoration-none u-color-folk-white u-bg-folk-secondary py-2 px-5" 
-                                href="#">
+                                class="l-blogs__read-more u-line-height-100 hover:u-opacity-8 d-block u-font-weight-bold text-center text-decoration-none u-color-folk-white u-bg-folk-secondary py-2 px-6" 
+                                href="<?php echo get_home_url( null, 'quem-somos' )  ?>">
                                     Saiba mais
                                 </a>
                             </div>
