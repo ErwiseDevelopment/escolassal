@@ -25,7 +25,7 @@
                                 );
 
                                 $galleries = new WP_Query( $args );
-
+                                if( $galleries->have_posts() == 1 ):
                                 if( $galleries->have_posts() ) :
                                     while( $galleries->have_posts() ) : $galleries->the_post();
                             ?>      
@@ -46,6 +46,7 @@
                                 wp_reset_query();
                             ?>
                             <!-- end loop -->
+                            
                         </div>
 
                         <div class="row justify-content-center">
@@ -60,6 +61,7 @@
                         </div>
                     </div>
                 </div>
+                <?php endif; ?>
             </div>
             
             <div class="col-lg-7 u-bg-folk-primary pt-5">
