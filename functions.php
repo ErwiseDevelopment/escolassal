@@ -232,7 +232,7 @@ function remove_links_menu() {
     remove_menu_page('link-manager.php'); // Links
     remove_menu_page('edit-comments.php'); // Comentarios
     //remove_menu_page('themes.php'); // Aparencia
-    remove_menu_page('plugins.php'); // Plugins
+    //remove_menu_page('plugins.php'); // Plugins
     remove_menu_page('tools.php'); // Ferramentas
     //remove_menu_page('options-general.php'); Configuracoes
 }
