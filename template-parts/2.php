@@ -1,3 +1,4 @@
+
 <section class="l-calendar my-5">
 
     <div class="container-fluid">
@@ -63,6 +64,10 @@
                 <?php endif; ?>
             </div>
            
+            <?php   
+                  $eventos_encontrados =  minha_funcao_personalizada(); 
+            if($eventos_encontrados=true):        
+            ?>
             
             <div class="col-lg-7 u-bg-folk-primary pt-5">
                 
@@ -137,7 +142,7 @@
                                             $post_agenda_count = wp_count_posts( 'agendas' );
                                             $post_agenda_count_current = intval( $post_agenda_count->publish );
                                             $count = -1;
-                                            $eventos_encontrados = false;
+                                           
 
                                             foreach ($array_meses as $mes => $meses): 
                                                 $date_current = $mes;
@@ -194,9 +199,7 @@
                                                                     foreach ( $array_agendas as $agenda ) :
                                                                         list($data_year, $data_month, $data_day) = explode("-", $agenda['data']);
 
-                                                                        if ( $mes == $data_month ) : 
-                                                                            $count = 0;
-                                                                ?>
+                                                                        if ( $mes == $data_month ) : ?>
                                                                             <div class="col-12 my-2 pl-0">
                                                                                 <p class="l-calendar__text u-font-weight-extrabold all:u-color-folk-white mb-0">
                                                                                     <!-- // 02-03 -->
@@ -204,16 +207,7 @@
                                                                                     <span class="u-font-weight-semibold"><?php echo $agenda["title"]; ?></span>
                                                                                 </p>
                                                                             </div>     
-                                                                <?php 
-                                                                        else : $count++; 
-                                                                            if( $count == $post_agenda_count_current ) {
-                                                                                $count = 0;
-                                                                                echo '<p class="u-color-folk-white">Não temos agenda para esse mês</p>';
-                                                                            }
-                                                                            //echo var_dump( 'data current', $mes,'data mes', $data_month)
-                                                                            //echo var_dump($count,$data_day,$data_month,$agenda["title"], $date_current, $data_month)
-
-                                                                ?>
+                                                                
                                                                 <?php   endif;
                                                                     endforeach; 
                                                                 ?>
@@ -221,12 +215,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                        <?php   else : ?>
-                                                    <div class="swiper-slide justify-content-start">
-                                                        <p class="u-color-folk-white">
-                                                            Não tem nenhum evento!
-                                                        </p>
-                                                    </div>        
                                         <?php   endif;
                                             endforeach; 
                                         ?>
@@ -253,8 +241,17 @@
                     </div>
                     <?php else: echo get_field('calendario_google', 'option'); endif;    ?>
                 </div>
-            <?php  ?>
-            </div> 
+            </div>
+            <?php else: echo '<div> nada </div>'; endif; ?> 
         </div>
     </div>
 </section>
+
+balneario 
+
+<iframe src="https://calendar.google.com/calendar/embed?src=c_736u86j59h9g1u1prhdj75ulho%40group.calendar.google.com&ctz=America%2FSao_Paulo" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                          
+itajai 
+
+<iframe src="https://calendar.google.com/calendar/embed?src=c_9144tr6k9312f53jp0cqdj6fks%40group.calendar.google.com&ctz=America%2FSao_Paulo" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                          

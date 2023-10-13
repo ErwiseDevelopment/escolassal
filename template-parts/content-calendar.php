@@ -75,7 +75,7 @@
                         <div class="row">
 
                             <div class="col-12">
-
+                            <?php if(get_field('ativa_calendario_do_google', 'option') == 0): ?>
                                 <!-- swiper -->
                                 <?php
                                     $year_current = date( "Y" );
@@ -128,7 +128,7 @@
                             </div>  
                             
                             <div class="col-12">
-                        
+                                           
                                 <!-- swiper -->
                                 <div class="swiper-container swiper-container-day js-swiper-day">
 
@@ -232,11 +232,12 @@
                                         ?>
                                     </div>
                                 </div>
-                                <!-- end swiper -->                           
+                                <!-- end swiper -->
+                                                           
                             </div>
                         </div>
                     </div>
-
+                   
                     <div class="col-12 d-flex flex-column justify-content-end mb-5 my-md-5 pb-5">
 
                         <div class="row">
@@ -250,6 +251,8 @@
                             </div>
                         </div>
                     </div>
+                    <?php else: echo get_field('calendario_google', 'option'); endif;    ?>
+
                 </div>
             </div> 
         </div>

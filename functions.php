@@ -153,7 +153,8 @@ add_action( 'init', 'mantenedora_create_page' );
 
 //Função para criar post type:
 function mantenedora_create_post_type() { 
-    
+ if(get_field('ativa_calendario_do_google', 'option') == 0):
+ 
     register_post_type( 'agendas', array(
 		'labels' 		=> array( 'name' => 'Agendas', 'singular_name' => 'Agenda', 'all_items' => 'Todos Eventos' ),
 		'public' 		=> true,
@@ -161,6 +162,7 @@ function mantenedora_create_post_type() {
 		'menu_icon'		=> 'dashicons-welcome-write-blog',
 		'supports' 		=> array( 'title', 'editor',  'revisions', 'author' ) 
 	) );
+    endif;
 
     register_post_type( 'teaching-mode', array(
 		'labels' 		=> array( 'name' => 'Modo de Ensino', 'singular_name' => 'Modo de Ensino', 'all_items' => 'Todas os posts' ),
@@ -328,3 +330,72 @@ function get_long_month( $month ) {
 
     return $monthCurrent;
 }
+function minha_funcao_personalizada() {
+    $year_current = date("Y");
+
+    $array_meses = array(
+        '01' => 'Janeiro',
+        '02' => 'Fevereiro',
+        '03' => 'Março',
+        '04' => 'Abril',
+        '05' => 'Maio',
+        '06' => 'Junho',
+        '07' => 'Julho',
+        '08' => 'Agosto',
+        '09' => 'Setembro',
+        '10' => 'Outubro',
+        '11' => 'Novembro',
+        '12' => 'Dezembro'
+    );
+    setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+    date_default_timezone_set('America/Sao_Paulo');
+
+   // $eventos_encontrados = false; // Defina como falso inicialmente
+
+    foreach ($array_meses as $mes => $meses) {
+        $date_current = $mes;
+        $current_year = strftime('%Y', strtotime('today'));
+        $data_inicio = date('Y' . $date_current . '01');
+        $data_final = date('Y' . $date_current . '31');
+
+        $args = array(
+            'post_type'         => 'agendas',
+            'posts_per_page'    => -1,
+            'orderby'           => 'meta_value',
+            'order'             => 'ASC',
+            'meta_key'          => 'data_custom_post_agenda_inicio',
+            'meta_query'        => array(
+                'relation'      => 'AND',
+                array(
+                    'key'       => 'data_custom_post_agenda_inicio',
+                    'value'     => $data_inicio,
+                    'compare'   => '>=',
+                    'type'      => 'DATE',
+                ),
+                array(
+                    'key'       => 'data_custom_post_agenda_inicio',
+                    'value'     => $data_final,
+                    'compare'   => '<=',
+                    'type'      => 'DATE',
+                ),
+            ),
+        );
+
+        $agendas = new WP_Query($args);
+
+        while( $agendas->have_posts()) : $agendas->the_post();
+        $data = get_field( 'data_custom_post_agenda_inicio', get_the_ID() );
+        $title = get_the_title();
+        $excerpt = get_the_excerpt();
+        $cidades = get_the_terms(get_the_ID(), 'agendacidade');
+        list($data_day, $data_month, $data_year) = explode("/", $data);
+        $array_agendas[] = array ( 'data' => $current_year.'-'.$data_month.'-'.$data_day, 'title' => $title, 'excerpt' => $excerpt, 'cidades' => $cidades );
+    endwhile; 
+    
+    if ( !empty ( $array_agendas ) ) {$eventos_encontrados = true;} else{$eventos_encontrados= false;}
+}
+$eventos_encontrados= false;
+    return $eventos_encontrados;
+}
+
+add_action('wp_loaded', 'minha_funcao_personalizada');
