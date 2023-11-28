@@ -56,13 +56,13 @@
                             
                         </div>
 
-
                         <div class="row justify-content-center">
 
                             <div class="col-md-8">
                                 <a 
                                 class="l-news__small__card-read-more u-line-height-100 hover:u-opacity-8 d-block u-font-weight-bold text-center text-decoration-none u-color-folk-white u-bg-folk-secondary py-2 px-5" 
-                                href="<?php echo get_field( 'veja_mais_galeria', 'options' ) ?>">
+                                href="<?php echo get_field('veja_mais_galeria
+','options')?>">
                                     Veja mais
                                 </a>
                             </div>
@@ -71,19 +71,11 @@
                 </div>
                 <?php endif; ?>
             </div>
-            <?php $eventos_encontrados = minha_funcao_personalizada(); 
-            $array_agendas = minha_funcao_personalizada(); 
-            ?>
-            <?php echo var_dump($eventos_encontrados) ?>
-            <?php echo var_dump($array_agendas)?>
-                            </br>
-           
             
-            <div class="col-lg-7 u-bg-folk-primary pt-5" <?php if ($eventos_encontrados = false):?> style="display: none;"  <?php endif;  ?>>
+            <div class="col-lg-7 u-bg-folk-primary pt-5">
                 
                 <h3 class="u-title--highlight u-line-height-100 u-font-weight-black text-uppercase u-color-folk-white mb-0">
                     Calendário:
-                    
                 </h3>
 
                 <div class="row h-100">
@@ -270,10 +262,9 @@
                         </div>
                     </div>
                     <?php else: echo get_field('calendario_google', 'option'); endif;    ?>
-                    
+
                 </div>
             </div> 
-           
         </div>
     </div>
 </section>
