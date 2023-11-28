@@ -357,7 +357,7 @@ function minha_funcao_personalizada() {
         $current_year = strftime('%Y', strtotime('today'));
         $data_inicio = date('Y' . $date_current . '01');
         $data_final = date('Y' . $date_current . '31');
-
+        
         $args = array(
             'post_type'         => 'agendas',
             'posts_per_page'    => -1,
@@ -389,13 +389,12 @@ function minha_funcao_personalizada() {
         $excerpt = get_the_excerpt();
         $cidades = get_the_terms(get_the_ID(), 'agendacidade');
         list($data_day, $data_month, $data_year) = explode("/", $data);
-        $array_agendas[] = array ( 'data' => $current_year.'-'.$data_month.'-'.$data_day, 'title' => $title, 'excerpt' => $excerpt, 'cidades' => $cidades );
+        $array_agendas[] = array ( 'data' => $current_year.'-'.$data_month.'-'.$data_day);
     endwhile; 
     
-    if ( !empty ( $array_agendas ) ) {$eventos_encontrados = true;} else{$eventos_encontrados= false;}
+    if ( !empty ( $array_agendas <> $date_current ) ) {$eventos_encontrados = true;} else{$eventos_encontrados= false;}
 }
-$eventos_encontrados= false;
-    return $eventos_encontrados;
+    return array($eventos_encontrados,$array_agendas);
 }
 
 add_action('wp_loaded', 'minha_funcao_personalizada');
