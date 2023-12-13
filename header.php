@@ -431,7 +431,7 @@
                                         <a
                                         class="d-block hover:u-opacity-8 u-font-size-14 u-font-weight-bold text-center text-decoration-none my-1 py-2 px-4"
                                         style="color:<?php echo get_sub_field( 'cor' ) ?>;background-color:<?php echo get_sub_field( 'cor_de_fundo' ) ?>"
-                                        href="#"
+                                        href="<?php echo get_sub_field('link_do_botao') ?>"
                                         <?php if( get_sub_field( 'abrir_em_uma_nova_aba' ) == 'Sim' ) : ?>
                                             target="_blank"
                                         <?php endif; ?>>
