@@ -261,7 +261,24 @@
                             </div>
                         </div>
                     </div>
-                    <?php else: echo get_field('calendario_google', 'option'); endif;    ?>
+                    <div class="row h-100">
+                    
+                    <div class="col-12">
+
+                        <div class="row">
+
+                            <div class="col-12">
+                            <?php else: echo get_field('calendario_google', 'option'); endif;    ?>
+                                                           
+                            </div>
+                        </div>
+                    </div>
+                   
+                                                           
+                            </div>
+                        </div>
+                    </div>
+                   
 
                 </div>
             </div> 
